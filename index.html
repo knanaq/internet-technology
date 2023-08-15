@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="header"></div>
+    <div class="container">
+        <img src="images/profile.jpg" class="imag">
+
+        <nav>
+            <img src="images/logo.jpg" class="logo">
+            <ul id="sidemenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="https://youtube.com/@couragezonyrah2051?si=cjhS1kM1-mIZwI87">About</a></li>
+                <li><a href="https://github.com/knanaq">Project</a></li>
+                <li><a href="https://www.instagram.com/anytin_medikal/?igshid=MjEwN2IyYWYwYw%3D%3D">Contacts</a></li>
+                <i class="fas fa-times" onclick="closemenu()"></i>
+            </ul>
+            <i class="fas fa-bars" onclick="openmenu()"></i>
+        </nav>
+        <div class="header-text">
+            <h1>Hi, I'm <span>Courage Zonyrah</span> from Ghana</h1>
+            <br>
+            <p>Undergraduate Student</p>
+        </div>
+    </div>
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="images/profile.jpg" class="imag2" style="width: fit-content;height: fit-content;">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-title">About Me</h1>
+                    <br>
+                    <p style="color: rgb(253, 253, 253);">An enthusiastic person eager to contribute to team success through hard
+                        work, also
+                        having strong knowledge of Java, and a variety of web-developing technologies, having
+                        strong problem-solving and analytical skills. Proven ability to work independently and as
+                        part of a team, excellent organizing skills and self-motivated individual.Feel free to contact
+                        me if you want any freelance project to be done.</p>
+                    <div class="tab-titles">
+                        
+                        <p class="tab-links" onclick="opentab('education')">Education</p>
+                    </div>
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li>• Java</li>
+                            <li>• HTML and CSS</li>
+                            <li>• IT Technician</li>
+                        </ul>
+                    </div>
+                   
+                    <div class="tab-contents" id="education">
+                        <ul>
+                            <li>• Computer Network Manangement - Koforidua Technical University.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h1 class="sub-title" style="padding-top: 100px;">Contact Me</h1>
+                    <p><i class="fa-solid fa-envelope"></i><a style="color: #fff;text-decoration: none;"
+                            href="mailto:knana1855@gmail.com">knana1855@gmail.com</a></p>
+                    <p><i class="fa-brands fa-github"></i><a href="https://github.com/knanaq"
+                            style="color: #fff;text-decoration: none;">Knana</a></p>
+                    <br>
+                    <a href="https://www.snapchat.com/add/adizzi6?share_id=cqguh9ikRnSEBAOGi9LWug&locale=en_GH" download class="button">Check-Out</a>
+                </div>
+                <div class="contact-right">
+                    <form name="submit-to-google-sheet">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <input type="text" name="Name" placeholder="Your Name" required>
+                        <input type="email" name="Email" placeholder="Your Email" required>
+                        <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                        <button type="submit" class="button">Submit</button>
+                    </form>
+                    <span id="msg"></span>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>Copyright <i class="fa-solid fa-copyright"> Courage Zonyrah</i> </p>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/93fbe47332.js" crossorigin="anonymous"></script>
+    <script>
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+        function opentab(tabname) {
+            for (tablink of tablinks) {
+                tablink.classList.remove("active-link");
+            }
+            for (tabcontent of tabcontents) {
+                tabcontent.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab");
+        }
+    </script>
+    <script>
+        var sidemeu = document.getElementById("sidemenu");
+        function openmenu() {
+            sidemenu.style.right = "0";
+        }
+        function closemenu() {
+            sidemeu.style.right = "-200px";
+        }
+    </script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbz_m0g0Z7v89BKb1T57o92AXMD1M112sOyGJ0KWBdwTHeE-63__A5EGCv_8j2-0HyBJ/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById("msg")
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    msg.innerHTML = "Message Sent Successfully"
+                    setTimeout(function () {
+                        msg.innerHTML = ""
+                    }, 5000)
+                    form.reset()
+
+                })
+                .catch(error => console.error('Error!', error.message))
+        })
+    </script>
+</body>
+
+</html>
